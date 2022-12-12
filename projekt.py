@@ -39,6 +39,8 @@ def normalny_atak():
 
 # atak specjalny
 def specjalny_atak():
+    global kasa_boh
+    global hp_boh
     if typ_boh.upper() == 'Z':
         kasa_boh = kasa_boh - 30
         return randint(5,15)
@@ -108,49 +110,61 @@ def wybieranie_ataku():
 
 # Przeciwnicy 1 poziom
 # 0 - imie, 1 - hp, 2 - atak, 3 - super atak
-prze1 = ["Elf", 10, 50, 0]
-prze2 = ["Gnom", 5, 40, 0]
-prze3 = ["Cyklop", 15, 20, 0]
+prze1 = ["Elf", 10, 10, 0]
+prze2 = ["Gnom", 5, 10, 0]
+prze3 = ["Cyklop", 15, 10, 0]
 lista_prze = [prze1, prze2, prze3]
 
 def random_prze():
     przeciwnik = lista_prze[randint(0,2)].copy()
     return przeciwnik
 
+# przeciwnik drugi poziom
+boss = ["boss", 80, 25]
+
 
 # gra
 liczba_pokonanych_przeciwników = 0
 while hp_boh > 0:
-    Opponent = random_prze()
-    print("="*40)
-    while Opponent[1] > 0 :
-        print(f"{imie_boh} walczy teraz z {Opponent[0]}")
-        print(f"Przeciwnik ma {Opponent[1]} Hp i zadaje ci {Opponent[2]} obrażeń")
-        hp_boh = hp_boh - Opponent[2]
-        if hp_boh <= 0:
-            break
-        print(f"Zostało ci {hp_boh} Hp i {kasa_boh} Many")
-        atak  = wybieranie_ataku()
-        Opponent[1] = Opponent[1] - atak
-        print(f"Zadałeś {atak} obrażeń \n")
-    if hp_boh > 0:
-        print("-"*40)
-        print('Zabiłeś przeciwnika !!!')
-        liczba_pokonanych_przeciwników = liczba_pokonanych_przeciwników + 1
-    
 
-    
+    if liczba_pokonanych_przeciwników < 3:
+        if liczba_pokonanych_przeciwników == 0:
+            print("POZIOM 1")
 
-
-
-
-
-
-
-
-
-
-
+        Opponent = random_prze()
+        print("="*40)
+        while Opponent[1] > 0 :
+            print(f"{imie_boh} walczy teraz z {Opponent[0]}")
+            print(f"Przeciwnik ma {Opponent[1]} Hp i zadaje ci {Opponent[2]} obrażeń")
+            hp_boh = hp_boh - Opponent[2]
+            if hp_boh <= 0:
+                break
+            print(f"Zostało ci {hp_boh} Hp i {kasa_boh} Many")
+            atak  = wybieranie_ataku()
+            Opponent[1] = Opponent[1] - atak
+            print(f"Zadałeś {atak} obrażeń \n")
+        if hp_boh > 0:
+            print("-"*40)
+            print('Zabiłeś przeciwnika !!!')
+            liczba_pokonanych_przeciwników = liczba_pokonanych_przeciwników + 1
+    else:
+        print("="*40)
+        print("POZIOM 2")
+        print("="*40)
+        while boss[1] > 0 :
+            print(f"{imie_boh} walczy teraz z {boss[0]}")
+            print(f"Przeciwnik ma {boss[1]} Hp i zadaje ci {boss[2]} obrażeń")
+            hp_boh = hp_boh - boss[2]
+            if hp_boh <= 0:
+                break
+            print(f"Zostało ci {hp_boh} Hp i {kasa_boh} $")
+            atak  = wybieranie_ataku()
+            boss[1] = boss[1] - atak
+            print(f"Zadałeś {atak} obrażeń \n")
+        if hp_boh > 0:
+            print("-"*40)
+            print('Zabiłeś przeciwnika !!!')
+            liczba_pokonanych_przeciwników = liczba_pokonanych_przeciwników + 1
 
 
 print("="*40)
