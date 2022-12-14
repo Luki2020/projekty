@@ -120,11 +120,12 @@ def random_prze():
     return przeciwnik
 
 # przeciwnik drugi poziom
-boss = ["boss", 80, 25]
+boss = ["boss", 5, 5]
 
 
 # gra
 liczba_pokonanych_przeciwników = 0
+liczba_zadanych_obrażeni = 0
 while hp_boh > 0:
 
     if liczba_pokonanych_przeciwników < 3:
@@ -142,12 +143,13 @@ while hp_boh > 0:
             print(f"Zostało ci {hp_boh} Hp i {kasa_boh} Many")
             atak  = wybieranie_ataku()
             Opponent[1] = Opponent[1] - atak
+            liczba_zadanych_obrażeni += atak
             print(f"Zadałeś {atak} obrażeń \n")
         if hp_boh > 0:
             print("-"*40)
             print('Zabiłeś przeciwnika !!!')
             liczba_pokonanych_przeciwników = liczba_pokonanych_przeciwników + 1
-    else:
+    elif liczba_pokonanych_przeciwników == 3:
         print("="*40)
         print("POZIOM 2")
         print("="*40)
@@ -160,17 +162,27 @@ while hp_boh > 0:
             print(f"Zostało ci {hp_boh} Hp i {kasa_boh} $")
             atak  = wybieranie_ataku()
             boss[1] = boss[1] - atak
+            liczba_zadanych_obrażeni += atak
             print(f"Zadałeś {atak} obrażeń \n")
+
         if hp_boh > 0:
-            print("-"*40)
+            print("="*40)
             print('Zabiłeś przeciwnika !!!')
             liczba_pokonanych_przeciwników = liczba_pokonanych_przeciwników + 1
 
-
-print("="*40)
-print("Zginąłes !!!!")
+    elif liczba_pokonanych_przeciwników == 4:
+        break
+if hp_boh > 0:
+    print("="*40) 
+    print("HUUURA WYGRAŁEŚ !!!!\n")
+else:
+    print("="*40)
+    print("Zginąłes !!!! \n")
+    
+print("Statystyki gry: ")    
 print(f"Zabiles {liczba_pokonanych_przeciwników} przeciwników")
-print("\n KONIEC GRY")
+print(f"Zadałeś {liczba_zadanych_obrażeni} hp przeciwniką")
+print("\nKONIEC GRY")
     
         
     
