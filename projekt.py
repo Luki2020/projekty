@@ -15,7 +15,7 @@ hp_boh = 0
 kasa_boh = 0
 while typ_boh.upper() not in ['A', 'D', 'Z']:
     print("Twoja kwota w portfelu wynosi 100$ wybierz typ bohatera:")
-    typ_boh = input("( Zwykły = z/Z | Atakujący(-40$) = a/A | Defensor(-40$) = d/D ) ---> ")
+    typ_boh = input("( ZWYKŁY = z/Z | ATAKUJĄCY(-40$) = a/A | DEFENSOR(-40$) = d/D ) ---> ")
     if typ_boh.upper() == 'A':
         hp_boh = 100
         kasa_boh = 60
@@ -110,17 +110,19 @@ def wybieranie_ataku():
 
 # Przeciwnicy 1 poziom
 # 0 - imie, 1 - hp, 2 - atak, 3 - super atak
-prze1 = ["Elf", 10, 10, 0]
-prze2 = ["Gnom", 5, 10, 0]
-prze3 = ["Cyklop", 15, 10, 0]
-lista_prze = [prze1, prze2, prze3]
+prze1 = ["Elfem", 10, 10]
+prze2 = ["Gnomem", 5, 10]
+prze3 = ["Cyklopem", 15, 10]
+prze4 = ["Karłem", 15, 5]
+lista_prze = [prze1, prze2, prze3, prze4]
 
 def random_prze():
-    przeciwnik = lista_prze[randint(0,2)].copy()
+    przeciwnik = lista_prze[randint(0,3)].copy()
     return przeciwnik
 
 # przeciwnik drugi poziom
-boss = ["boss", 5, 5]
+
+boss = ["cyborg", 25, randint(5,10)]
 
 
 # gra
@@ -183,15 +185,3 @@ print("Statystyki gry: ")
 print(f"Zabiles {liczba_pokonanych_przeciwników} przeciwników")
 print(f"Zadałeś {liczba_zadanych_obrażeni} hp przeciwniką")
 print("\nKONIEC GRY")
-    
-        
-    
-        
-
-
-    
-
-   
-
-
-
