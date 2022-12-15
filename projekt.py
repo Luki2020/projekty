@@ -124,6 +124,18 @@ def random_prze():
 
 boss = ["cyborg", 25, randint(5,10)]
 
+# nagroda
+def nagroda():
+    print("Możesz kupić doładowanie 30 hp(-30$)")
+    wybr = input("T - tak, N - nie ---> ")
+    global hp_boh
+    if wybr == "T":
+        hp_boh = hp_boh + 30
+        print(f"doładowano hp | {imie_boh} ma {hp_boh} hp")
+    else:
+        print(f"Nie kupiono  | {imie_boh} ma {hp_boh} hp")
+
+
 # gra
 liczba_pokonanych_przeciwników = 0
 liczba_zadanych_obrażeni = 0
@@ -145,12 +157,14 @@ while hp_boh > 0:
             atak  = wybieranie_ataku()
             Opponent[1] = Opponent[1] - atak
             liczba_zadanych_obrażeni += atak
-            print(f"Zadałeś {atak} obrażeń \n")
+            print(f"{imie_boh} zadaje {atak} obrażeń \n")
         if hp_boh > 0:
             print("-"*40)
-            print('Zabiłeś przeciwnika !!!')
+            print(f'{imie_boh} zabił przeciwnika !!!')
             liczba_pokonanych_przeciwników = liczba_pokonanych_przeciwników + 1
     elif liczba_pokonanych_przeciwników == 3:
+        if hp_boh < 60:
+            nagroda()
         print("="*40)
         print("POZIOM 2")
         print("="*40)
@@ -164,23 +178,28 @@ while hp_boh > 0:
             atak  = wybieranie_ataku()
             boss[1] = boss[1] - atak
             liczba_zadanych_obrażeni += atak
-            print(f"Zadałeś {atak} obrażeń \n")
+            print(f"{imie_boh} zadaje {atak} obrażeń \n")
 
         if hp_boh > 0:
             print("="*40)
-            print('Zabiłeś przeciwnika !!!')
+            print(f'{imie_boh} zabił przeciwnika !!!')
             liczba_pokonanych_przeciwników = liczba_pokonanych_przeciwników + 1
 
     elif liczba_pokonanych_przeciwników == 4:
         break
 if hp_boh > 0:
     print("="*40) 
-    print("HUUURA WYGRAŁEŚ !!!!\n")
+    print(F"{imie_boh} WYGRAŁ GRE !!!!\n")
 else:
     print("="*40)
-    print("Zginąłes !!!! \n")
+    print(f"{imie_boh} ZGINĄŁ !!!! \n")
     
 print("Statystyki gry: ")    
 print(f"Zabiles {liczba_pokonanych_przeciwników} przeciwników")
 print(f"Zadałeś {liczba_zadanych_obrażeni} hp przeciwniką")
 print("\nKONIEC GRY")
+        
+        
+        
+    
+        
