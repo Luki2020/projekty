@@ -169,7 +169,7 @@ while hp_boh > 0:
         print("POZIOM 2")
         print("="*40)
         while boss[1] > 0 :
-            print(f"{imie_boh} walczy teraz z {boss[0]}")
+            print(f"{imie_boh} walczy teraz z {boss[0]} (boss)")
             print(f"Przeciwnik ma {boss[1]} Hp i zadaje ci {boss[2]} obrażeń")
             hp_boh = hp_boh - boss[2]
             if hp_boh <= 0:
