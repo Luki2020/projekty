@@ -1,4 +1,4 @@
-from random import randint, random;
+from random import randint;
 # wprowadzenie do gry
 print('Witaj w grze ....')
 
