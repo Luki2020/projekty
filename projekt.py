@@ -55,10 +55,12 @@ def specjalny_atak():
 # wybieranie ataku
 def wybieranie_ataku():
     print("\n Wybierz atak: ")
+
     if typ_boh.upper() == "Z":
         print("Atak podstawowy(2-8 hp) = p/P")
         print('Super atak(5-15 hp) = s/S ')
         wbr_atak = input("----> ")
+        
         if wbr_atak.upper() == 'P':
             return normalny_atak()
         elif wbr_atak.upper() == 'S':
@@ -67,7 +69,7 @@ def wybieranie_ataku():
                return specjalny_atak()  
             else:
                 print("!"*100)
-                print("Nie masz wystarczającej ilość pieniędzy :( " )
+                print("Nie masz wystarczającej ilości pieniędzy :( " )
                 return 0
         else:
             print("Nie wybrałeś ataku!")
@@ -109,7 +111,7 @@ def wybieranie_ataku():
             return 0
 
 # Przeciwnicy 1 poziom
-# 0 - imie, 1 - hp, 2 - atak, 3 - super atak
+# 0 - imie, 1 - hp, 2 - atak
 prze1 = ["Elfem", 10, 10]
 prze2 = ["Gnomem", 5, 10]
 prze3 = ["Cyklopem", 15, 10]
@@ -117,23 +119,23 @@ prze4 = ["Karłem", 15, 5]
 lista_prze = [prze1, prze2, prze3, prze4]
 
 def random_prze():
-    przeciwnik = lista_prze[randint(0,3)].copy()
+    przeciwnik = lista_prze[randint(0,3)]
     return przeciwnik
 
 # przeciwnik drugi poziom
 
 boss = ["cyborg", 25, randint(5,10)]
 
-# nagroda
+# nagroda(doładowanie hp)
 def nagroda():
     print("Możesz kupić doładowanie 30 hp(-30$)")
     wybr = input("T - tak, N - nie ---> ")
     global hp_boh
-    if wybr == "T":
+    if wybr.upper() == "T":
         hp_boh = hp_boh + 30
-        print(f"doładowano hp | {imie_boh} ma {hp_boh} hp")
+        print(f"Doładowano hp | {imie_boh} ma {hp_boh} hp")
     else:
-        print(f"Nie kupiono  | {imie_boh} ma {hp_boh} hp")
+        print(f"Nie doładowano hp  | {imie_boh} ma {hp_boh} hp")
 
 
 # gra
@@ -158,6 +160,7 @@ while hp_boh > 0:
             Opponent[1] = Opponent[1] - atak
             liczba_zadanych_obrażeni += atak
             print(f"{imie_boh} zadaje {atak} obrażeń \n")
+            
         if hp_boh > 0:
             print("-"*40)
             print(f'{imie_boh} zabił przeciwnika !!!')
