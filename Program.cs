@@ -93,7 +93,7 @@ namespace projekt
                 if (licbza_prze < max_liczba_prze)
                 {
                     Console.WriteLine($"Spotykasz przeciwnika {licbza_prze + 1}!");
-
+                    //tworzenie przeciwnika
                     string imie_prze = $"Przeciwnik {licbza_prze + 1}";
                     int hp_prze = random.Next(20, 60);
                     int gold_prze = random.Next(10, 30);
