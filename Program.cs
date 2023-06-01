@@ -39,13 +39,13 @@ namespace projekt
             {
                 case 1:
                     nazwa_plem = "Wojownik";
-                    hp_boh = 100;
-                    zloto_boh = 2;
+                    hp_boh = 50;
+                    zloto_boh = 20;
                     demage_bron = random.Next(5, 16);
                     break;
                 case 2:
                     nazwa_plem = "Mag";
-                    hp_boh = 20;
+                    hp_boh = 30;
                     zloto_boh = 20;
                     demage_bron = random.Next(5, 16);
                     break;
