@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +10,7 @@ namespace projekt
     {
         static void Main(string[] args)
         {
-           
+
             // Przywitanie uzytkownika
             Console.WriteLine("Witaj w grze");
 
@@ -32,7 +32,7 @@ namespace projekt
             int zloto_boh = 0;
             int demage_bron = 0;
             string nazwa_plem = "";
-        
+
 
             Random random = new Random();
             switch (plem_boh)
@@ -40,13 +40,13 @@ namespace projekt
                 case 1:
                     nazwa_plem = "Wojownik";
                     hp_boh = 100;
-                    zloto_boh = 50;
+                    zloto_boh = 2;
                     demage_bron = random.Next(5, 16);
                     break;
                 case 2:
                     nazwa_plem = "Mag";
-                    hp_boh = 80;
-                    zloto_boh = 100;
+                    hp_boh = 20;
+                    zloto_boh = 20;
                     demage_bron = random.Next(5, 16);
                     break;
                 default:
@@ -54,21 +54,21 @@ namespace projekt
                     return; // Zakończenie działania programu
             }
             Console.WriteLine($"Twój bohater to {nazwa_plem} o imieniu {imie_boh}.");
-            
+
             // kilka zmiennych
             bool sklep_otwar = true;
             int licbza_prze = 0;
-            int max_liczba_prze = 4;
+            int max_liczba_prze = 2;
             int cena_sklepu = 30;
-            
+
             // głowna petla
             while (true)
             {
                 // sklep
-                if (sklep_otwar && licbza_prze > 1)
+                if (sklep_otwar && licbza_prze == 1)
                 {
                     Console.WriteLine("Odwiedzasz sklep. Możesz kupić lepszą broń.");
-                    Console.WriteLine($"Koszt: {sklep_otwar} złota. Posiadasz {zloto_boh}");
+                    Console.WriteLine($"Koszt: {cena_sklepu} złota. Posiadasz {zloto_boh}");
                     Console.WriteLine("Czy chcesz kupić nową broń? (Tak - 't', Nie - dowolny klawisz)");
 
                     if (Console.ReadKey().KeyChar == 't')
@@ -88,11 +88,10 @@ namespace projekt
 
                     sklep_otwar = false;
                 }
-
                 // Walka z przeciwnikami
                 if (licbza_prze < max_liczba_prze)
                 {
-                    Console.WriteLine($"Spotykasz przeciwnika {licbza_prze + 1}!");
+                    Console.WriteLine($"Spotykasz {licbza_prze + 1} przeciwnika!");
                     //tworzenie przeciwnika
                     string imie_prze = $"Przeciwnik {licbza_prze + 1}";
                     int hp_prze = random.Next(20, 60);
@@ -115,7 +114,7 @@ namespace projekt
                                 Console.WriteLine($"{imie_boh} atakuje {imie_prze} za {demage_bron} obrażeń.");
                                 hp_prze -= demage_bron;
 
-                                if (hp_prze >= 0)
+                                if (hp_prze > 0)
                                 {
                                     Console.WriteLine($"{imie_prze} atakuje {imie_boh} za {atak_prze} obrażeń.");
                                     hp_boh -= atak_prze;
@@ -137,7 +136,7 @@ namespace projekt
                     if (hp_boh <= 0)
                     {
                         Console.WriteLine("Twój bohater zginął. Koniec gry.");
-                        return;
+                        break;
                     }
                     else
                     {
@@ -153,18 +152,15 @@ namespace projekt
                 else
                 {
                     Console.WriteLine("Pokonałeś wszystkich przeciwników! Gratulacje!");
-                    return;
+                    break;
                 }
             }
+
+            Console.WriteLine("Naciśnij dowolny klawisz, aby zakończyć...");
+            Console.ReadKey();
         }
     }
 }
-
-
-
-
-
-
 
 
 
