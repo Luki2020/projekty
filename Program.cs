@@ -51,10 +51,12 @@ namespace projekt
                     break;
                 default:
                     Console.WriteLine("Nie wybrales bohatera :(");
+                    Console.ReadKey();
                     return; // Zakończenie działania programu
             }
             Console.WriteLine($"Twój bohater to {nazwa_plem} o imieniu {imie_boh}.");
-
+            Console.WriteLine($"Ma {hp_boh}hp i {zloto_boh}złota ");
+            Console.WriteLine("-------------------------------------------");
             // kilka zmiennych
             bool sklep_otwar = true;
             int licbza_prze = 0;
@@ -97,6 +99,7 @@ namespace projekt
                     int hp_prze = random.Next(20, 60);
                     int gold_prze = random.Next(10, 30);
                     int atak_prze = random.Next(3, 10);
+                    Console.WriteLine($"Ma {hp_prze} hp i {gold_prze}");
 
                     Console.WriteLine($"Zaczynasz walkę z {imie_prze}!");
 
@@ -104,7 +107,7 @@ namespace projekt
                     {
                         Console.WriteLine("Co chcesz zrobić?");
                         Console.WriteLine("1. Atakuj");
-                        Console.WriteLine("2. Uciekaj");
+                        Console.WriteLine("2. Uciekaj = smierc");
 
                         int wbr_akcji = int.Parse(Console.ReadLine());
 
@@ -161,10 +164,6 @@ namespace projekt
         }
     }
 }
-
-
-
-
 
 
 
